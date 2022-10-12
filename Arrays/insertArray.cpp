@@ -27,10 +27,30 @@ void append(struct Array *arr, int x) {
     }
 
 }
+
+// insert element in an array
+void insert(struct Array *arr, int index, int x) {
+    int i;
+    // check if the given index is valid
+    // from 0 to length of array is valid
+    if(index>=0 && index <=arr->length) {
+        for(i = arr->length; i> index; i--) {
+            // copy elements from index one step forward
+            arr->A[i] = arr->A[i-1];
+        }
+        // insert element at index
+        arr->A[index] = x;
+        arr->length++;
+   
+    }
+
+}
+
 int main() {
     
     // initialize array
     struct Array arr = {{2,3,4,5,6}, 10, 5};
+    insert(&arr, 0, 10);
     append(&arr, 10);
     display(arr);
     return 0;
